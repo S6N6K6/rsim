@@ -1,3 +1,2 @@
-add_subdirectory(RSIM_static_lib)
-add_subdirectory(RSIM_shared_lib)
+# add_subdirectory(RSIM_Core)
 add_subdirectory(app)
