@@ -13,3 +13,4 @@ endif()
 # PUBLIC -v)
 
 target_include_directories(RSIMCore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/RSIM)
+target_link_libraries(RSIMCore PRIVATE spdlog::spdlog_header_only)
