@@ -56,3 +56,6 @@ CMakeUserPresets.json
 
 # Build specific
 build/*
+
+# CLANGD Specific cache
+.cache/*
