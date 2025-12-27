@@ -1,7 +1,16 @@
 #include <iostream>
 
-int main() {
+#include "RSIM.h"
 
-  std::cout << "Hello World!" << std::endl;
-  return 0;
+class  RSIM_API Sandbox : public RSIM::Application {
+    public:
+  Sandbox() {}
+  ~Sandbox() {}
+  void Run(){
+    std::cout << "Hello from client!" << std::endl;
+  }
+};
+
+RSIM::Application* RSIM::CreateApplication(){
+  return new Sandbox();
 }

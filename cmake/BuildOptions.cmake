@@ -25,10 +25,12 @@ endif()
 # -------------------------------------------------------------------
 # Platform specific configuration
 # -------------------------------------------------------------------
-if(WINDOWS)
+if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
   add_compile_definitions(RSIM_PLATFORM_WINDOWS)
-elseif(LINUX)
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
   add_compile_definitions(RSIM_PLATFORM_LINUX)
+else()
+  message(WARNING "System not supported")
 endif()
 
 # -------------------------------------------------------------------
