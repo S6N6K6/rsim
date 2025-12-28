@@ -24,6 +24,38 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(spdlog)
 message("SPDLOG DEPENDECY END")
 
+# -------------------------------------------------------------------
+# GLFW Dependecy
+# -------------------------------------------------------------------
+message("GLFW DEPENDENCY START")
+set(GLFW_BUILD_TESTS
+    OFF
+    CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES
+    OFF
+    CACHE BOOL "" FORCE)
+set(GLFW_BUILD_DOCS
+    OFF
+    CACHE BOOL "" FORCE)
+FetchContent_Declare(
+  glfw
+  GIT_REPOSITORY https://github.com/glfw/glfw.git
+  GIT_TAG 3.3.10)
+FetchContent_MakeAvailable(glfw)
+message("GLFW DEPENDENCY END")
+# -------------------------------------------------------------------
+# OpenGL Library Setup
+# -------------------------------------------------------------------
+find_package(OpenGL REQUIRED)
+# -------------------------------------------------------------------
+# GLAD Library Setup
+# -------------------------------------------------------------------
+FetchContent_Declare(
+  glad
+  GIT_REPOSITORY https://github.com/Dav1dde/glad.git
+  GIT_TAG v0.1.36)
+
+FetchContent_MakeAvailable(glad)
 # Add your libraries here as such: 1. either with find_package
 # find_package(OpenGL REQUIRED) 2. Define from where to take it and use it
 # FetchContent_Declare( glfw GIT_REPOSITORY https://github.com/glfw/glfw.git
