@@ -4,9 +4,9 @@
 #include "Core.h"
 #include "Log.h"
 
-extern RSIM::Application* RSIM::CreateApplication();
+extern RSIM::Application *RSIM::CreateApplication();
 
-int main(int argc, char** argv){
+int main(int argc, char **argv) {
 
   RSIM::Log::Init();
   RSIM_CORE_WARN("Initialized Log from Core");
