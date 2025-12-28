@@ -56,7 +56,7 @@ AllowShortLoopsOnASingleLine: false
 AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: false
-AlwaysBreakTemplateDeclarations: MultiLine
+AlwaysBreakTemplateDeclarations: Yes
 AttributeMacros:
   - __capability
 BinPackArguments: true
@@ -132,7 +132,7 @@ IndentCaseBlocks: false
 IndentCaseLabels: false
 IndentExternBlock: AfterExternBlock
 IndentGotoLabels: true
-IndentPPDirectives: None
+IndentPPDirectives: BeforeHash
 IndentRequiresClause: true
 IndentWidth:     2
 IndentWrappedFunctionNames: false
