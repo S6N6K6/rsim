@@ -1,9 +1,13 @@
 #pragma once
 
 #include "Core.h"
+#include "spdlog/fmt/bundled/base.h"
+#include <Events/Event.h>
 #include <memory.h>
+#include <spdlog/fmt/ostr.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
+#include <sstream>
 
 namespace RSIM {
   class RSIM_API Log {
@@ -22,6 +26,22 @@ namespace RSIM {
   };
 } // namespace RSIM
 //
+
+/*
+ * Custom formatter for the Event class that allows logging the events
+ * */
+namespace fmt {
+  template <>
+  struct formatter<RSIM::Event> {
+      constexpr auto parse(format_parse_context &ctx) { return ctx.begin(); }
+      template <typename FormatContext>
+      auto format(const RSIM::Event &e, FormatContext &ctx) const {
+        std::ostringstream oss;
+        oss << e;
+        return format_to(ctx.out(), "{}", oss.str());
+      }
+  };
+} // namespace fmt
 
 // Core Log Macros
 #define RSIM_CORE_TRACE(...) ::RSIM::Log::GetCoreLogger()->trace(__VA_ARGS__)
