@@ -15,3 +15,8 @@
   #error RSIM Supports only Windows and Linux
 #endif
 
+#include <cstdint>
+
+constexpr std::uint32_t bit(unsigned int pos) noexcept {
+  return std::uint32_t{1} << pos;
+}
