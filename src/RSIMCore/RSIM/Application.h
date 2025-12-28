@@ -4,15 +4,15 @@
 #include "Core.h"
 
 namespace RSIM {
-class RSIM_API Application {
-public:
-  Application();
-  virtual ~Application();
+  class RSIM_API Application {
+    public:
+      Application();
+      virtual ~Application();
 
-  virtual void Run();
-};
+      virtual void Run();
+  };
 
-// To be define in CLIENT
-Application* CreateApplication();
+  // To be define in CLIENT
+  Application *CreateApplication();
 
 } // namespace RSIM
