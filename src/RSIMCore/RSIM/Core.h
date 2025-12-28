@@ -20,3 +20,21 @@
 constexpr std::uint32_t bit(unsigned int pos) noexcept {
   return std::uint32_t{1} << pos;
 }
+
+#ifdef RSIM_ENABLE_ASSERTS
+  #define RSIM_ASSERT(x, ...)                                                  \
+    {                                                                          \
+      if (!(x)) {                                                              \
+        RSIM_ERROR("Assertion Failed: {0}", __VA_ARGS__);                      \
+      }                                                                        \
+    }
+  #define RSIM_CORE_ASSERT(x, ...)                                             \
+    {                                                                          \
+      if (!(x)) {                                                              \
+        RSIM_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__);                 \
+      }                                                                        \
+    }
+#else
+  #define RSIM_ASSERT(x, ...)
+  #define RSIM_CORE_ASSERT(x, ...)
+#endif
