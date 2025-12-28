@@ -3,19 +3,21 @@
 #include "Events/Event.h"
 #include "Events/MouseEvent.h"
 #include "Log.h"
+#include "Window.h"
+
+// #include <GL/gl.h>
+#include <GLFW/glfw3.h>
 
 namespace RSIM {
-  Application::Application() {}
-  Application::~Application() {
-    std::cout << "Ended application!" << std::endl;
+  Application::Application() {
+    m_window = std::unique_ptr<Window>(Window::Create());
   }
+  Application::~Application() {}
   void Application::Run() {
-    WindowResizeEvent e(1200, 720);
-    RSIM_TRACE(static_cast<const Event &>(e));
-    RSIM_INFO(e.IsInCategory(EventCategory::EventCategoryApplication));
-    RSIM_CORE_ERROR(e.GetName());
-
-    while (true)
-      ;
+    while (m_running) {
+      m_window->OnUpdate();
+      glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
+      glClear(GL_COLOR_BUFFER_BIT);
+    }
   }
 } // namespace RSIM

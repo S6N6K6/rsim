@@ -1,7 +1,8 @@
 #pragma once
-#include <iostream>
+#include <memory>
 
 #include "Core.h"
+#include "Window.h"
 
 namespace RSIM {
   class RSIM_API Application {
@@ -10,6 +11,10 @@ namespace RSIM {
       virtual ~Application();
 
       virtual void Run();
+private:
+  std::unique_ptr<Window> m_window;
+  bool m_running = true;
+
   };
 
   // To be define in CLIENT
