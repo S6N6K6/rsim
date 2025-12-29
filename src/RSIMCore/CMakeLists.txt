@@ -8,10 +8,11 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
   target_compile_definitions(RSIMCore PUBLIC RSIM_BUILD_DLL)
 endif()
 target_compile_definitions(RSIMCore PUBLIC RSIM_ENABLE_ASSERTS)
+target_compile_definitions(RSIMCore PUBLIC GLFW_INCLUDE_NONE)
 # Use -v to get more build and linking information
-# target_compile_options(RSIM_Core PUBLIC -v) target_link_options(RSIM_Core
-# PUBLIC -v)
+# target_compile_options(RSIMCore PUBLIC -v) target_link_options(RSIMCore PUBLIC
+# -v)
 
 target_include_directories(RSIMCore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/RSIM)
-target_link_libraries(RSIMCore PUBLIC OpenGL::GL glfw glad
-                                      spdlog::spdlog_header_only)
+target_link_libraries(RSIMCore PRIVATE OpenGL::GL glfw glad
+                                       spdlog::spdlog_header_only)

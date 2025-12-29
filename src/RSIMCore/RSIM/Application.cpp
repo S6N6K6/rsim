@@ -5,14 +5,17 @@
 #include "Window.h"
 
 // #include <GL/gl.h>
-#include <GLFW/glfw3.h>
 #include <functional>
+#include <glad/glad.h>
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 namespace RSIM {
   Application::Application() {
     m_window = std::unique_ptr<Window>(Window::Create());
     m_window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+    unsigned int VAO;
+    glGenVertexArrays(1, &VAO);
   }
   Application::~Application() {}
 

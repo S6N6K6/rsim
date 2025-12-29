@@ -8,8 +8,8 @@ namespace RSIM {
 
   struct WindowsProps {
       std::string Title;
-      unsigned int Width;
-      unsigned int Height;
+  unsigned int Width;
+  unsigned int Height;
 
       WindowsProps(const std::string &title = "RSIM Engine",
                    unsigned int width = 1280, unsigned int height = 720)

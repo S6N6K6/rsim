@@ -3,8 +3,9 @@
 #include "Events/ApplicationEvent.h"
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
-#include "GLFW/glfw3.h"
 #include "Window.h"
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
 
 namespace RSIM {
 
@@ -44,6 +45,8 @@ namespace RSIM {
     m_window = glfwCreateWindow((int)m_data.Width, (int)m_data.Height,
                                 m_data.Title.c_str(), nullptr, nullptr);
     glfwMakeContextCurrent(m_window);
+    int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+    RSIM_CORE_ASSERT(status, "Could no initialize GLAD!")
     glfwSetWindowUserPointer(m_window, &m_data);
     SetVSync(true);
 
