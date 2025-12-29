@@ -3,6 +3,7 @@
 
 #include "Core.h"
 #include "Events/ApplicationEvent.h"
+#include "LayerStack.h"
 #include "Window.h"
 
 namespace RSIM {
@@ -12,12 +13,15 @@ namespace RSIM {
       virtual ~Application();
 
       virtual void Run();
-      void OnEvent(Event& e);
-private:
-  bool OnWindowClose(WindowCloseEvent& e);
-  std::unique_ptr<Window> m_window;
-  bool m_running = true;
+      void OnEvent(Event &e);
+      void PushLayer(Layer *layer);
+      void PushOveray(Layer *layer);
 
+    private:
+      bool OnWindowClose(WindowCloseEvent &e);
+      std::unique_ptr<Window> m_window;
+      bool m_running = true;
+      LayerStack m_LayerStack;
   };
 
   // To be define in CLIENT

@@ -15,11 +15,22 @@ namespace RSIM {
     m_window->SetEventCallback(BIND_EVENT_FN(OnEvent));
   }
   Application::~Application() {}
+
+  void Application::PushLayer(Layer *layer) { m_LayerStack.PushLayer(layer); }
+
+  void Application::PushOveray(Layer *layer) {
+    m_LayerStack.PushOverlay(layer);
+  }
+
   void Application::Run() {
     while (m_running) {
-      m_window->OnUpdate();
       glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
       glClear(GL_COLOR_BUFFER_BIT);
+
+      for (Layer *layer : m_LayerStack)
+        layer->OnUpdate();
+
+      m_window->OnUpdate();
     }
   }
 
@@ -27,6 +38,12 @@ namespace RSIM {
     EventDispatcher dispatcher(e);
     dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
     RSIM_CORE_TRACE(static_cast<Event &>(e));
+
+    for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();) {
+      (*--it)->OnEvent(e);
+      if (e.IsHandled())
+        break;
+    }
   }
 
   bool Application::OnWindowClose(WindowCloseEvent &e) {
