@@ -75,6 +75,8 @@ namespace RSIM {
         return static_cast<bool>(GetCategoryFlag() & category);
       }
 
+      inline bool IsHandled() const { return m_Handled; }
+
     protected:
       bool m_Handled = false; // Decides whether the event was handled or not
   };
