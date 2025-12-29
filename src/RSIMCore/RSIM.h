@@ -9,6 +9,7 @@
 #include "RSIM/Events/Event.h"
 #include "RSIM/Events/KeyEvent.h"
 #include "RSIM/Events/MouseEvent.h"
+#include "RSIM/ImGui/ImGuiLayer.h"
 
 // -------------- ENTRY POINT --------------------
 #include "EntryPoint.h"

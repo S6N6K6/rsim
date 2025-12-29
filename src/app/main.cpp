@@ -1,7 +1,7 @@
 #include <iostream>
 
+// #include "ImGui/ImGuiLayer.h"
 #include "RSIM.h"
-
 class ExampleLayer : public RSIM::Layer {
   public:
     ExampleLayer()
@@ -20,6 +20,7 @@ class RSIM_API Sandbox : public RSIM::Application {
   public:
     Sandbox() {
     PushLayer(new ExampleLayer());
+    PushOverlay(new RSIM::ImGuiLayer());
  }
     ~Sandbox() {}
 };
