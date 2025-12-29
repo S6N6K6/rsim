@@ -62,6 +62,16 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(glad)
 message("glad source dir: ${glad_SOURCE_DIR}")
 
+# -------------------------------------------------------------------
+# ImGUI Library Setup
+# -------------------------------------------------------------------
+FetchContent_Declare(
+  imgui
+  GIT_REPOSITORY https://github.com/ocornut/imgui.git
+  GIT_TAG v1.92.5)
+FetchContent_MakeAvailable(imgui)
+message("imgui source dir: ${imgui_SOURCE_DIR}")
+
 # Add your libraries here as such: 1. either with find_package
 # find_package(OpenGL REQUIRED) 2. Define from where to take it and use it
 # FetchContent_Declare( glfw GIT_REPOSITORY https://github.com/glfw/glfw.git
