@@ -32,3 +32,14 @@ target_include_directories(RSIMCore PUBLIC ${imgui_SOURCE_DIR}
 target_link_libraries(
   RSIMCore PRIVATE OpenGL::GL glfw glad spdlog::spdlog_header_only
                    $<TARGET_OBJECTS:imgui_obj>)
+target_link_libraries(
+  RSIMCore
+  PRIVATE X11
+          Xrandr
+          Xi
+          Xinerama
+          Xcursor
+          GL
+          pthread
+          dl
+          m)

@@ -37,6 +37,12 @@ set(GLFW_BUILD_EXAMPLES
 set(GLFW_BUILD_DOCS
     OFF
     CACHE BOOL "" FORCE)
+set(GLFW_BUILD_WAYLAND
+    OFF
+    CACHE BOOL "" FORCE)
+set(GLFW_BUILD_X11
+    ON
+    CACHE BOOL "" FORCE)
 FetchContent_Declare(
   glfw
   GIT_REPOSITORY https://github.com/glfw/glfw.git
@@ -53,7 +59,6 @@ find_package(OpenGL REQUIRED)
 set(GLAD_PROFILE
     "core"
     CACHE STRING "OpenGL profile")
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 FetchContent_Declare(
   glad
   GIT_REPOSITORY https://github.com/Dav1dde/glad.git
