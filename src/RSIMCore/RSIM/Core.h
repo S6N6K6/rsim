@@ -38,3 +38,5 @@ constexpr std::uint32_t bit(unsigned int pos) noexcept {
   #define RSIM_ASSERT(x, ...)
   #define RSIM_CORE_ASSERT(x, ...)
 #endif
+
+#define RSIM_BIND_FN(fn) std::bind(&fn, this, std::placeholders::_1)

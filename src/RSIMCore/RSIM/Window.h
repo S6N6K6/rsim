@@ -4,12 +4,15 @@
 #include "Events/Event.h"
 #include "Log.h"
 
+struct GLFWwindow {
+}; // Forward Declare a GLFWwindow struct to be able to access it;
+
 namespace RSIM {
 
   struct WindowsProps {
       std::string Title;
-  unsigned int Width;
-  unsigned int Height;
+      unsigned int Width;
+      unsigned int Height;
 
       WindowsProps(const std::string &title = "RSIM Engine",
                    unsigned int width = 1280, unsigned int height = 720)
@@ -32,8 +35,12 @@ namespace RSIM {
       virtual void SetEventCallback(const EventCallbackFn &callback) = 0;
       virtual void SetVSync(bool enabled) = 0;
       virtual bool IsVSync() const = 0;
+      virtual GLFWwindow *GetNativeWindow() const = 0;
 
       static Window *Create(const WindowsProps &props = WindowsProps());
+
+    protected:
+      GLFWwindow *m_nativeWindow;
   };
 
 } // namespace RSIM

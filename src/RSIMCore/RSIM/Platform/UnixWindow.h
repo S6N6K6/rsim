@@ -4,8 +4,6 @@
 
 // #include <glad/glad.h>
 
-struct GLFWwindow {};
-
 namespace RSIM {
 
   class UnixWindow : public Window {
@@ -22,6 +20,7 @@ namespace RSIM {
       inline void SetEventCallback(const EventCallbackFn &callback) override {
         m_data.EventCallback = callback;
       }
+      inline GLFWwindow *GetNativeWindow() const override { return m_window; }
       void SetVSync(bool enabled) override;
       bool IsVSync() const override;
 

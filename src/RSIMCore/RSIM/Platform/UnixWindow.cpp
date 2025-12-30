@@ -3,9 +3,9 @@
 #include "Events/ApplicationEvent.h"
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
+#include "GLFW/glfw3.h"
 #include "Window.h"
 #include "glad/glad.h"
-#include "GLFW/glfw3.h"
 
 namespace RSIM {
 
@@ -89,6 +89,13 @@ namespace RSIM {
       }
       }
     });
+
+    glfwSetCharCallback(
+        m_window, [](GLFWwindow *window, unsigned int codepoint) {
+          WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+          KeyTypedEvent event(codepoint);
+          data.EventCallback(event);
+        });
 
     glfwSetMouseButtonCallback(
         m_window, [](GLFWwindow *window, int button, int action, int mods) {
