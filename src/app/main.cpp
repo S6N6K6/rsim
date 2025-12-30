@@ -19,7 +19,7 @@ class ExampleLayer : public RSIM::Layer {
 class RSIM_API Sandbox : public RSIM::Application {
   public:
     Sandbox() {
-    PushLayer(new ExampleLayer());
+    // PushLayer(new ExampleLayer());
     PushOverlay(new RSIM::ImGuiLayer());
  }
     ~Sandbox() {}
